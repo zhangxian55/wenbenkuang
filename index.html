@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>xian test</title>
+    <link rel="stylesheet" type="text/css" href="dist/css/wangEditor.min.css">
+    <style type="text/css">
+        #editor-trigger {
+            height: 400px;
+            /*max-height: 500px;*/
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+<body style="padding:0 20px;">
+    <div id="editor-container" class="container">
+        <div id="editor-trigger"></div>
+    </div>
+    <button id="btn1">获取内容</button>
+    <script type="text/javascript" src="dist/js/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="dist/js/wangEditor.js"></script>
+    <script type="text/javascript">
+        var editor = new wangEditor('editor-trigger');
+
+
+        editor.config.uploadImgUrl = '/upload';
+        editor.config.uploadParams = {
+        };
+        editor.config.uploadHeaders = {
+            // 'Accept' : 'text/x-json'
+        }
+        editor.config.emotionsShow = 'value';
+        editor.config.emotions = {
+            'default': {
+                title: '默认',
+                data: './emotions.data'
+            },
+            'weibo': {
+                title: '微博表情',
+                data: [
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/7a/shenshou_thumb.gif',
+                        value: '[!]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/60/horse2_thumb.gif',
+                        value: '[神马]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/bc/fuyun_thumb.gif',
+                        value: '[浮云]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/c9/geili_thumb.gif',
+                        value: '[给力]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/f2/wg_thumb.gif',
+                        value: '[围观]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/70/vw_thumb.gif',
+                        value: '[威武]'
+                    }
+                ]
+            }
+        };
+        editor.create();
+        $('#btn1').click(function () {
+        // 获取编辑器区域完整html代码
+        var html = editor.$txt.html();
+        html=html.substring(3,html.length-4);
+          console.log(html)
+    });
+    </script>
+</body>
+</html>
